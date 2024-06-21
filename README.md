@@ -7,4 +7,24 @@ extern __declspec(dllexport) void StartProxy(char* cmdLine);
 extern __declspec(dllexport) void StopProxy();
 
 # 调用示例
-StartProxy("-L=:8888 -F=socks5://usre:pass@127.0.0.1:8080");
+
+作为标准HTTP/SOCKS5代理
+gost -L=:8080
+
+设置代理认证信息
+gost -L=admin:123456@localhost:8080
+
+多端口监听
+gost -L=http2://:443 -L=socks5://:1080 -L=ss://aes-128-cfb:123456@:8338
+
+设置转发代理
+gost -L=:8080 -F=192.168.1.1:8081
+
+转发代理认证
+gost -L=:8080 -F=http://admin:123456@192.168.1.1:8081
+
+。。。
+
+更多命令参考gost官方文档
+
+
